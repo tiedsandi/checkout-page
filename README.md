@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# Checkout Homepage
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Checkout Homepage project is a crucial component of our e-commerce platform, designed to streamline the online shopping experience for customers. This project focuses on creating a user-friendly and efficient checkout process that ensures a seamless transition from product selection to finalizing the purchase.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Shopping Cart Summary
+- Payment Options
+- Shipping Options
+- responsive
 
-### `yarn start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Client:** Reactjs, Styled-Components, React-hook-form
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Server:** **None**
 
-### `yarn test`
+## Demo
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Insert gif or link to demo
 
-### `yarn build`
+## Screenshots
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Run Locally
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Clone the project
 
-### `yarn eject`
+```bash
+  git clone https://link-to-project
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Go to the project directory
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+  cd my-project
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Install dependencies
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+  yarn install
+```
 
-## Learn More
+Start the server
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+  yarn start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Running Tests
 
-### Code Splitting
+To run tests, run the following command
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+  yarn test
+```
 
-### Analyzing the Bundle Size
+<!-- ## Optimizations
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+What optimizations did you make in your code? E.g. refactors, performance
+improvements, accessibility -->
 
-### Making a Progressive Web App
+<!-- ## Appendix
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Any additional information goes here -->
 
-### Advanced Configuration
+# Hi, I'm Fachran! 👋
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🚀 About Me
 
-### Deployment
+I'm a Junior Frontend dev, freshgradueate from UPNVJ Indonesia.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🛠 Skills
 
-### `yarn build` fails to minify
+Javascript, HTML, CSS, Figma, React.js, Redux, SASS, Bootstrap
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🔗 Links
+
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://fachran-sandi.netlify.app/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/fachransandi/)
