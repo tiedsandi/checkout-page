@@ -1,10 +1,18 @@
-import "./App.css";
+import React, { useContext } from "react";
+import { Breadcrumb, Wrapper } from "./Styled";
+import { CheckoutContext } from "./contexts/CheckoutContext";
 
 function App() {
+	const { pageRender } = useContext(CheckoutContext);
+	console.log(pageRender);
+
 	return (
-		<div className="App">
-			<h1>app</h1>
-		</div>
+		<Wrapper>
+			<Breadcrumb>
+				<span>Delivery</span> {">"} Payment {">"} Finish
+			</Breadcrumb>
+			<h1>Checkout</h1>
+		</Wrapper>
 	);
 }
 
