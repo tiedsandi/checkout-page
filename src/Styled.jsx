@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
 	background-color: #fff;
 	max-width: 1440px;
 	width: 100%;
-	margin: 2rem auto;
+	margin: 0 auto;
 	padding: 2rem;
 
 	box-shadow: 1px 1px 18px 2px rgba(0, 0, 0, 0.1);
@@ -14,9 +14,30 @@ export const Wrapper = styled.div`
 
 export const Breadcrumb = styled.div`
 	color: #000;
-	font-size: 20px;
+	font-size: 16px;
+	margin-bottom: 1rem;
 
 	& span {
 		color: orange;
 	}
+`;
+
+export const Grid = styled.section`
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	gapl: 1rem;
+
+	@media (max-width: 768px) {
+		grid-template-columns: 1fr;
+	}
+`;
+
+export const Heading1 = styled.h1`
+	color: orange;
+	font-size: 31px;
+`;
+
+export const Heading2 = styled.h2`
+	color: orange;
+	font-size: 25px;
 `;

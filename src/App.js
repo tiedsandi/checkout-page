@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
-import { Breadcrumb, Wrapper } from "./Styled";
+import { Breadcrumb, Grid, Wrapper } from "./Styled";
 import { CheckoutContext } from "./contexts/CheckoutContext";
+import DeliveryDetails from "./pages/delivery-details";
+import Summary from "./layout/summary";
 
 function App() {
 	const { pageRender } = useContext(CheckoutContext);
@@ -11,7 +13,12 @@ function App() {
 			<Breadcrumb>
 				<span>Delivery</span> {">"} Payment {">"} Finish
 			</Breadcrumb>
-			<h1>Checkout</h1>
+			<Grid>
+				{pageRender === "delivery" && <DeliveryDetails />}
+				{pageRender === "payment" && <DeliveryDetails />}
+				{pageRender === "finish" && <DeliveryDetails />}
+				<Summary />
+			</Grid>
 		</Wrapper>
 	);
 }
