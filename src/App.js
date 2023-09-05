@@ -1,22 +1,23 @@
-import React, { useContext } from "react";
-import { Breadcrumb, Grid, Wrapper } from "./Styled";
-import { CheckoutContext } from "./contexts/CheckoutContext";
-import DeliveryDetails from "./pages/delivery-details";
-import Summary from "./layout/summary";
+import React, { useContext } from 'react';
+
+import DeliveryDetails from './pages/delivery-details';
+import Summary from './layout/summary';
+
+import { Breadcrumb, Grid, Wrapper } from './Styled';
+import { CheckoutContext } from './contexts/CheckoutContext';
 
 function App() {
 	const { pageRender } = useContext(CheckoutContext);
-	console.log(pageRender);
 
 	return (
 		<Wrapper>
 			<Breadcrumb>
-				<span>Delivery</span> {">"} Payment {">"} Finish
+				<span>Delivery</span> {'>'} Payment {'>'} Finish
 			</Breadcrumb>
 			<Grid>
-				{pageRender === "delivery" && <DeliveryDetails />}
-				{pageRender === "payment" && <DeliveryDetails />}
-				{pageRender === "finish" && <DeliveryDetails />}
+				{pageRender === 'delivery' && <DeliveryDetails />}
+				{pageRender === 'payment' && <DeliveryDetails />}
+				{pageRender === 'finish' && <DeliveryDetails />}
 				<Summary />
 			</Grid>
 		</Wrapper>

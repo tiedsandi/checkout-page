@@ -25,7 +25,7 @@ export const Breadcrumb = styled.div`
 export const Grid = styled.section`
 	display: grid;
 	grid-template-columns: 2fr 1fr;
-	gapl: 1rem;
+	gap: 2rem;
 
 	@media (max-width: 768px) {
 		grid-template-columns: 1fr;
