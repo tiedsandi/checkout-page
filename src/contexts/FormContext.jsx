@@ -1,14 +1,18 @@
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Controller } from 'react-hook-form';
 
-export const FormContext = createContext();
+export const FormContext = createContext({
+	isDropshipper: false,
+	setIsDropshipper: () => {},
+});
 
 export const FormProvider = ({ children }) => {
 	const { register, handleSubmit, formState, setValue, getValues, reset, watch, control } = useForm({
 		mode: 'onChange',
 	});
 	const { errors } = formState;
+	const [isDropshipper, setIsDropshipper] = useState(false);
 
 	const value = {
 		register,
@@ -20,6 +24,8 @@ export const FormProvider = ({ children }) => {
 		watch,
 		control,
 		Controller,
+		isDropshipper,
+		setIsDropshipper,
 	};
 
 	return <FormContext.Provider value={value}>{children}</FormContext.Provider>;

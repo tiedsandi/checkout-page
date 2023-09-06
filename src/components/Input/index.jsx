@@ -4,7 +4,7 @@ import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FormContext } from '../../contexts/FormContext';
 
-const Input = ({ label, pattern, required }) => {
+const Input = ({ label, pattern, required, disabled }) => {
 	const [inputHasValue, setInputHasValue] = useState(false);
 	const { errors, control, Controller } = useContext(FormContext);
 
@@ -17,6 +17,7 @@ const Input = ({ label, pattern, required }) => {
 				name={label}
 				control={control}
 				defaultValue=""
+				disabled={disabled}
 				rules={{ required, pattern }}
 				render={({ field }) => (
 					<InputStyles
