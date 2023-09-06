@@ -5,6 +5,9 @@ import Input from '../../components/Input';
 
 const DeliveryDetails = () => {
 	// const deliveryAddressValue = watch('deliveryAddress', '');
+	const regPhone = /^[0][8][0-9,\-\+\(\)]{6,20}$/;
+	const regEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
 	return (
 		<Wrapper>
 			<Heading>
@@ -13,28 +16,13 @@ const DeliveryDetails = () => {
 			</Heading>
 			<WrapperForm>
 				<FormDetails>
-					<Input
-						name={'Email'}
-						label={'Email'}
-						pattern={/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/}
-						required={true}
-					/>
-					<Input label={'Phone Number'} name={'phoneNumber'} pattern={/^[0][8][0-9,\-\+\(\)]{6,20}$/} required={true} />
-					<Input label={'Delivery Address'} name={'deliveryAddress'} required={true} />
+					<Input label={'Email'} pattern={regEmail} required={true} />
+					<Input label={'Phone Number'} pattern={regPhone} required={true} />
+					<Input label={'Delivery Address'} required={true} />
 				</FormDetails>
 				<FormDropshipper>
-					<Input
-						label={'Dropshiper Name'}
-						name={'dropshiperName'}
-						pattern={/^[0][8][0-9,\-\+\(\)]{6,20}$/}
-						required={true}
-					/>
-					<Input
-						label={'Dropshiper Phone Number'}
-						name={'dropshiperPhoneNumber'}
-						pattern={/^[0][8][0-9,\-\+\(\)]{6,20}$/}
-						required={true}
-					/>
+					<Input label={'Dropshiper Name'} required={true} />
+					<Input label={'Dropshiper Phone Number'} pattern={regPhone} required={true} />
 				</FormDropshipper>
 			</WrapperForm>
 		</Wrapper>

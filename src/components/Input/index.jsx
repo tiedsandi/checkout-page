@@ -4,47 +4,40 @@ import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FormContext } from '../../contexts/FormContext';
 
-const Input = ({ label, name, pattern, required }) => {
+const Input = ({ label, pattern, required }) => {
 	const [inputHasValue, setInputHasValue] = useState(false);
 	const { errors, control, Controller } = useContext(FormContext);
 
-	const handleInputFocus = () => {
-		setInputHasValue(true);
-	};
-
-	const handleInputBlur = e => {
-		if (e.target.value === '') {
-			setInputHasValue(false);
-		}
-	};
 	return (
-		<Wrapper className={`${errors[name] ? 'error' : inputHasValue ? 'success' : ''}`}>
-			<Label className={`${inputHasValue ? 'active' : ''}`} htmlFor={name}>
+		<Wrapper className={`${errors[label] ? 'error' : inputHasValue ? 'success' : ''}`}>
+			<Label className={`${inputHasValue ? 'active' : ''}`} htmlFor={label}>
 				{label}
 			</Label>
 			<Controller
-				name={name}
+				name={label}
 				control={control}
 				defaultValue=""
-				rules={{
-					required,
-					pattern,
-				}}
+				rules={{ required, pattern }}
 				render={({ field }) => (
-					<InputStyles {...field} type="text" id={name} onFocus={handleInputFocus} onBlur={handleInputBlur} />
+					<InputStyles
+						{...field}
+						type="text"
+						id={label}
+						onInput={() => setInputHasValue(true)}
+						onBlur={e => e.target.value === '' && setInputHasValue(false)}
+					/>
 				)}
 			/>
-			{errors[name] && (
+			{errors[label] && (
 				<ErrorIcon>
 					<FontAwesomeIcon icon={faTimes} />
 				</ErrorIcon>
 			)}
-			{!errors[name] && inputHasValue && (
+			{!errors[label] && inputHasValue && (
 				<SuccessIcon>
 					<FontAwesomeIcon icon={faCheck} />
 				</SuccessIcon>
 			)}
-			{/* {errors[name] && <div className="error-message">This field is required and should match the pattern.</div>} */}
 		</Wrapper>
 	);
 };
