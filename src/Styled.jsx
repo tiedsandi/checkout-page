@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
 export const Wrapper = styled.div`
 	background-color: #fff;
@@ -22,7 +22,7 @@ export const Breadcrumb = styled.div`
 	}
 `;
 
-export const Grid = styled.section`
+export const Grid = styled.form`
 	display: grid;
 	grid-template-columns: 2fr 1fr;
 	gap: 2rem;

@@ -1,33 +1,42 @@
 import React from 'react';
 import { Heading1 } from '../../Styled';
-import { FormDetails, FormDropshipper, FormWrapper, Heading, Wrapper } from './styles';
-import { useForm } from 'react-hook-form';
-import Input from '../../components/Inputs';
+import { FormDetails, FormDropshipper, Heading, Wrapper, WrapperForm } from './styles';
+import Input from '../../components/Input';
 
 const DeliveryDetails = () => {
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm({ mode: 'onChange' });
-
+	// const deliveryAddressValue = watch('deliveryAddress', '');
 	return (
 		<Wrapper>
 			<Heading>
 				<Heading1>DeliveryDetails</Heading1>
 				<div className="checkout">dropshipper?</div>
 			</Heading>
-			<FormWrapper>
+			<WrapperForm>
 				<FormDetails>
-					<Input label={'Email'} register={register} required />
-					<Input label={'Phone Number'} register={register} required />
-					<Input label={'Delivery Address'} register={register} required />
+					<Input
+						name={'Email'}
+						label={'Email'}
+						pattern={/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/}
+						required={true}
+					/>
+					<Input label={'Phone Number'} name={'phoneNumber'} pattern={/^[0][8][0-9,\-\+\(\)]{6,20}$/} required={true} />
+					<Input label={'Delivery Address'} name={'deliveryAddress'} required={true} />
 				</FormDetails>
 				<FormDropshipper>
-					<Input label={'Dropshiper Name'} register={register} required />
-					<Input label={'Dropshiper Phone Number'} register={register} required />
+					<Input
+						label={'Dropshiper Name'}
+						name={'dropshiperName'}
+						pattern={/^[0][8][0-9,\-\+\(\)]{6,20}$/}
+						required={true}
+					/>
+					<Input
+						label={'Dropshiper Phone Number'}
+						name={'dropshiperPhoneNumber'}
+						pattern={/^[0][8][0-9,\-\+\(\)]{6,20}$/}
+						required={true}
+					/>
 				</FormDropshipper>
-			</FormWrapper>
+			</WrapperForm>
 		</Wrapper>
 	);
 };

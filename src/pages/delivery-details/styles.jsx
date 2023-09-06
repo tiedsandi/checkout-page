@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
 export const Wrapper = styled.div`
 	width: 100%;
@@ -11,10 +11,15 @@ export const Heading = styled.div`
 	margin-bottom: 1rem;
 `;
 
-export const FormWrapper = styled.form`
+export const WrapperForm = styled.div`
 	display: grid;
-	grid-template-columns: 2fr 1fr;
+	grid-template-columns: 5fr 4fr;
+	gap: 0.5rem;
 `;
 
-export const FormDetails = styled.div``;
-export const FormDropshipper = styled.div``;
+export const FormDetails = styled.div`
+	// background-color: red;
+`;
+export const FormDropshipper = styled.div`
+	// background-color: blue;
+`;
