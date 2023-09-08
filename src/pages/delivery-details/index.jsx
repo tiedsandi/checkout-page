@@ -8,7 +8,6 @@ import CheckButtonDropshipper from '../../components/checkbutton';
 const DeliveryDetails = () => {
 	const { isDropshipper } = useContext(FormContext);
 
-	// const deliveryAddressValue = watch('deliveryAddress', '');
 	const regPhone = /^[0][8][0-9,+()]{6,20}$/;
 	const regEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 

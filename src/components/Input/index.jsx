@@ -3,11 +3,14 @@ import { InputStyles, Label, Wrapper, ErrorIcon, SuccessIcon, TextAreaSyles } fr
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FormContext } from '../../contexts/FormContext';
+import CharacterCounter from '../character-counter';
 
 const Input = ({ label, pattern, disabled, type }) => {
 	const [inputHasValue, setInputHasValue] = useState(false);
 	const [inputValue, setInputValue] = useState('');
-	const { errors, control, Controller, setValue } = useContext(FormContext);
+	const { errors, control, Controller, setValue, watch } = useContext(FormContext);
+
+	const deliveryAddressValue = watch(label, '');
 
 	useEffect(() => {
 		if (!disabled) {
@@ -62,6 +65,7 @@ const Input = ({ label, pattern, disabled, type }) => {
 					<FontAwesomeIcon icon={faCheck} />
 				</SuccessIcon>
 			)}
+			{type === 'text-area' && <CharacterCounter value={deliveryAddressValue} maxLength={200} />}
 		</Wrapper>
 	);
 };

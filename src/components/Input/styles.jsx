@@ -3,7 +3,6 @@ import { styled } from 'styled-components';
 export const Wrapper = styled.div`
 	position: relative;
 	margin-bottom: 16px;
-	// border: 1px solid #ccc;
 	transition: border-color 0.3s;
 
 	&.error {
@@ -53,7 +52,7 @@ export const TextAreaSyles = styled.textarea`
 	border-radius: 4px;
 	outline: none;
 	width: 100%;
-	height: 200px;
+	height: 110px;
 
 	&.success {
 		border-color: rgba(0, 128, 0, 0.3);
