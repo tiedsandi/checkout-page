@@ -18,7 +18,7 @@ const Input = ({ label, pattern, required, disabled }) => {
 				control={control}
 				defaultValue=""
 				disabled={disabled}
-				rules={{ required, pattern }}
+				rules={{ required: !disabled, pattern }}
 				render={({ field }) => (
 					<InputStyles
 						{...field}
