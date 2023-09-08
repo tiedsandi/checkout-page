@@ -20,18 +20,13 @@ const DeliveryDetails = () => {
 			</Heading>
 			<WrapperForm>
 				<FormDetails>
-					<Input label={'Email'} pattern={regEmail} required={true} />
-					<Input label={'Phone Number'} pattern={regPhone} required={true} />
-					<Input label={'Delivery Address'} required={true} />
+					<Input label={'Email'} pattern={regEmail} />
+					<Input label={'Phone Number'} pattern={regPhone} />
+					<Input label={'Delivery Address'} />
 				</FormDetails>
 				<FormDropshipper>
-					<Input label={'Dropshiper Name'} required={true} disabled={isDropshipper ? false : true} />
-					<Input
-						label={'Dropshiper Phone Number'}
-						pattern={regPhone}
-						required={true}
-						disabled={isDropshipper ? false : true}
-					/>
+					<Input label={'Dropshiper Name'} disabled={isDropshipper ? false : true} />
+					<Input label={'Dropshiper Phone Number'} pattern={regPhone} disabled={isDropshipper ? false : true} />
 				</FormDropshipper>
 			</WrapperForm>
 		</Wrapper>
