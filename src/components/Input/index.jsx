@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { InputStyles, Label, Wrapper, ErrorIcon, SuccessIcon } from './styles';
+import { InputStyles, Label, Wrapper, ErrorIcon, SuccessIcon, TextAreaSyles } from './styles';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FormContext } from '../../contexts/FormContext';
 
-const Input = ({ label, pattern, disabled }) => {
+const Input = ({ label, pattern, disabled, type }) => {
 	const [inputHasValue, setInputHasValue] = useState(false);
 	const [inputValue, setInputValue] = useState('');
 	const { errors, control, Controller, setValue } = useContext(FormContext);
@@ -21,7 +21,7 @@ const Input = ({ label, pattern, disabled }) => {
 	};
 
 	return (
-		<Wrapper className={`${errors[label] ? 'error' : inputHasValue ? 'success' : ''}`}>
+		<Wrapper>
 			<Label className={`${inputHasValue ? 'active' : ''}`} htmlFor={label}>
 				{label}
 			</Label>
@@ -31,15 +31,26 @@ const Input = ({ label, pattern, disabled }) => {
 				defaultValue={inputValue}
 				disabled={disabled}
 				rules={{ required: !disabled, pattern }}
-				render={({ field }) => (
-					<InputStyles
-						{...field}
-						type="text"
-						id={label}
-						onInput={InputHandle}
-						onBlur={e => e.target.value === '' && setInputHasValue(false)}
-					/>
-				)}
+				render={({ field }) =>
+					type === 'text-area' ? (
+						<TextAreaSyles
+							{...field}
+							id={label}
+							onInput={InputHandle}
+							onBlur={e => e.target.value === '' && setInputHasValue(false)}
+							className={`${errors[label] ? 'error' : inputHasValue ? 'success' : ''}`}
+						/>
+					) : (
+						<InputStyles
+							{...field}
+							type="text"
+							id={label}
+							onInput={InputHandle}
+							onBlur={e => e.target.value === '' && setInputHasValue(false)}
+							className={`${errors[label] ? 'error' : inputHasValue ? 'success' : ''}`}
+						/>
+					)
+				}
 			/>
 			{errors[label] && (
 				<ErrorIcon>

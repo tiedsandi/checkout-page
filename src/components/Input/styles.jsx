@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 export const Wrapper = styled.div`
 	position: relative;
 	margin-bottom: 16px;
-	border: 1px solid #ccc;
+	// border: 1px solid #ccc;
 	transition: border-color 0.3s;
 
 	&.error {
@@ -31,7 +31,7 @@ export const Label = styled.label`
 
 export const InputStyles = styled.input`
 	padding: 10px;
-	border: 1px solid transparent;
+	border: 1px solid #ccc;
 	border-radius: 4px;
 	font-size: 16px;
 	outline: none;
@@ -39,16 +39,33 @@ export const InputStyles = styled.input`
 	width: 100%;
 
 	&.success {
-		border-color: red; /* Border color for error input */
+		border-color: rgba(0, 128, 0, 0.3);
 	}
 	&.error {
-		border-color: red; /* Border color for error input */
+		border-color: rgba(255, 0, 0, 0.3);
+	}
+`;
+
+export const TextAreaSyles = styled.textarea`
+	border-color: #ccc;
+	padding: 10px;
+	font-size: 16px;
+	border-radius: 4px;
+	outline: none;
+	width: 100%;
+	height: 200px;
+
+	&.success {
+		border-color: rgba(0, 128, 0, 0.3);
+	}
+	&.error {
+		border-color: rgba(255, 0, 0, 0.3);
 	}
 `;
 
 export const ErrorIcon = styled.span`
 	position: absolute;
-	top: 50%;
+	top: 1.25rem;
 	right: 10px;
 	transform: translateY(-50%);
 	color: red;

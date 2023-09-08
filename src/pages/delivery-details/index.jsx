@@ -22,7 +22,7 @@ const DeliveryDetails = () => {
 				<FormDetails>
 					<Input label={'Email'} pattern={regEmail} />
 					<Input label={'Phone Number'} pattern={regPhone} />
-					<Input label={'Delivery Address'} />
+					<Input label={'Delivery Address'} type={'text-area'} />
 				</FormDetails>
 				<FormDropshipper>
 					<Input label={'Dropshiper Name'} disabled={isDropshipper ? false : true} />
