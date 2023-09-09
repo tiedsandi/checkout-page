@@ -5,15 +5,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FormContext } from '../../contexts/FormContext';
 import CharacterCounter from '../character-counter';
 
-const Input = ({ label, parentObjc, pattern, disabled, type }) => {
+const Input = ({ label, name, pattern, disabled, type }) => {
 	const { errors, control, Controller, setValue, watch } = useContext(FormContext);
 	const [inputHasValue, setInputHasValue] = useState(false);
 	const [inputValue, setInputValue] = useState('');
 
-	const deliveryAddressValue = watch(label, '');
-	const fullName = parentObjc ? `${parentObjc}.${label}` : label;
-	const errorName = parentObjc && errors[parentObjc] ? errors[parentObjc][label] : errors[label];
+	const deliveryAddressValue = watch(name, '');
 
+	const fullName = name;
+	const part = name.split('.');
+	const errorName = part[1] && errors[part[0]] ? errors[part[0]][part[1]] : errors[part[0]];
+
+	// console.log(errors);
 	useEffect(() => {
 		if (!disabled) {
 			setValue(fullName, inputValue);

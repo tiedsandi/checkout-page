@@ -19,15 +19,15 @@ const DeliveryDetails = () => {
 			</Heading>
 			<WrapperForm>
 				<FormDetails>
-					<Input label={'Email'} pattern={regEmail} />
-					<Input label={'Phone Number'} pattern={regPhone} />
-					<Input label={'Delivery Address'} type={'text-area'} />
+					<Input label={'Email'} name="email" pattern={regEmail} />
+					<Input label={'Phone Number'} name="phoneNumber" pattern={regPhone} />
+					<Input label={'Delivery Address'} name="deliveryAddress" type={'text-area'} />
 				</FormDetails>
 				<FormDropshipper>
-					<Input label={'Dropshiper Name'} parentObjc="Dropshiper" disabled={isDropshipper ? false : true} />
+					<Input label={'Dropshiper Name'} name="dropshiper.name" disabled={isDropshipper ? false : true} />
 					<Input
 						label={'Dropshiper Phone Number'}
-						parentObjc="Dropshiper"
+						name="dropshiper.phoneNumber"
 						pattern={regPhone}
 						disabled={isDropshipper ? false : true}
 					/>
