@@ -24,8 +24,13 @@ const DeliveryDetails = () => {
 					<Input label={'Delivery Address'} type={'text-area'} />
 				</FormDetails>
 				<FormDropshipper>
-					<Input label={'Dropshiper Name'} disabled={isDropshipper ? false : true} />
-					<Input label={'Dropshiper Phone Number'} pattern={regPhone} disabled={isDropshipper ? false : true} />
+					<Input label={'Dropshiper Name'} parentObjc="Dropshiper" disabled={isDropshipper ? false : true} />
+					<Input
+						label={'Dropshiper Phone Number'}
+						parentObjc="Dropshiper"
+						pattern={regPhone}
+						disabled={isDropshipper ? false : true}
+					/>
 				</FormDropshipper>
 			</WrapperForm>
 		</Wrapper>

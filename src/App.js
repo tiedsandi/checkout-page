@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 
 import DeliveryDetails from './pages/delivery-details';
+import PaymentDetails from './pages/payment-details';
+import FinishDetail from './pages/finish-details';
 import Summary from './layout/summary';
 
 import { Breadcrumb, Grid, Wrapper } from './Styled';
@@ -8,17 +10,27 @@ import { CheckoutContext } from './contexts/CheckoutContext';
 import { FormContext } from './contexts/FormContext';
 
 function App() {
-	const { pageRender } = useContext(CheckoutContext);
+	const { pageRender, setPageRender } = useContext(CheckoutContext);
 	const { handleSubmit } = useContext(FormContext);
+
+	const OnSubmit = data => {
+		console.log(data);
+		if (pageRender === 'delivery') {
+			setPageRender('payment');
+		} else if (pageRender === 'payment') {
+			setPageRender('finish');
+		} else setPageRender('delivery');
+	};
+
 	return (
 		<Wrapper>
 			<Breadcrumb>
 				<span>Delivery</span> {'>'} Payment {'>'} Finish
 			</Breadcrumb>
-			<Grid onSubmit={handleSubmit(data => console.log(data))}>
+			<Grid onSubmit={handleSubmit(OnSubmit)}>
 				{pageRender === 'delivery' && <DeliveryDetails />}
-				{pageRender === 'payment' && <DeliveryDetails />}
-				{pageRender === 'finish' && <DeliveryDetails />}
+				{pageRender === 'payment' && <PaymentDetails />}
+				{pageRender === 'finish' && <FinishDetail />}
 				<Summary />
 			</Grid>
 		</Wrapper>

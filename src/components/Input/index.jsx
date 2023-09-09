@@ -5,18 +5,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FormContext } from '../../contexts/FormContext';
 import CharacterCounter from '../character-counter';
 
-const Input = ({ label, pattern, disabled, type }) => {
+const Input = ({ label, parentObjc, pattern, disabled, type }) => {
+	const { errors, control, Controller, setValue, watch } = useContext(FormContext);
 	const [inputHasValue, setInputHasValue] = useState(false);
 	const [inputValue, setInputValue] = useState('');
-	const { errors, control, Controller, setValue, watch } = useContext(FormContext);
 
 	const deliveryAddressValue = watch(label, '');
+	const fullName = parentObjc ? `${parentObjc}.${label}` : label;
+	const errorName = parentObjc && errors[parentObjc] ? errors[parentObjc][label] : errors[label];
 
 	useEffect(() => {
 		if (!disabled) {
-			setValue(label, inputValue);
+			setValue(fullName, inputValue);
 		}
-	}, [inputValue, setValue, disabled, label]);
+	}, [inputValue, setValue, disabled, fullName]);
 
 	const InputHandle = e => {
 		setInputHasValue(true);
@@ -25,11 +27,11 @@ const Input = ({ label, pattern, disabled, type }) => {
 
 	return (
 		<Wrapper>
-			<Label className={`${inputHasValue ? 'active' : ''}`} htmlFor={label}>
+			<Label className={`${inputHasValue ? 'active' : ''}`} htmlFor={fullName}>
 				{label}
 			</Label>
 			<Controller
-				name={label}
+				name={fullName}
 				control={control}
 				defaultValue={inputValue}
 				disabled={disabled}
@@ -38,29 +40,29 @@ const Input = ({ label, pattern, disabled, type }) => {
 					type === 'text-area' ? (
 						<TextAreaSyles
 							{...field}
-							id={label}
+							id={fullName}
 							onInput={InputHandle}
 							onBlur={e => e.target.value === '' && setInputHasValue(false)}
-							className={`${errors[label] ? 'error' : inputHasValue ? 'success' : ''}`}
+							className={`${errorName ? 'error' : inputHasValue ? 'success' : ''}`}
 						/>
 					) : (
 						<InputStyles
 							{...field}
 							type="text"
-							id={label}
+							id={fullName}
 							onInput={InputHandle}
 							onBlur={e => e.target.value === '' && setInputHasValue(false)}
-							className={`${errors[label] ? 'error' : inputHasValue ? 'success' : ''}`}
+							className={`${errorName ? 'error' : inputHasValue ? 'success' : ''}`}
 						/>
 					)
 				}
 			/>
-			{errors[label] && (
+			{errorName && (
 				<ErrorIcon>
 					<FontAwesomeIcon icon={faTimes} />
 				</ErrorIcon>
 			)}
-			{!errors[label] && inputHasValue && (
+			{!errorName && inputHasValue && (
 				<SuccessIcon>
 					<FontAwesomeIcon icon={faCheck} />
 				</SuccessIcon>
