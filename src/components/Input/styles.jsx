@@ -30,6 +30,7 @@ export const Label = styled.label`
 
 export const InputStyles = styled.input`
 	padding: 10px;
+	padding-right: 1.5rem;
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	font-size: 16px;
@@ -48,12 +49,14 @@ export const InputStyles = styled.input`
 export const TextAreaSyles = styled.textarea`
 	border-color: #ccc;
 	padding: 10px;
+	padding-right: 1.5rem;
 	font-size: 16px;
 	border-radius: 4px;
 	outline: none;
 	width: 100%;
 	height: 110px;
-
+	resize: none;
+	overflow-y: hidden;
 	&.success {
 		border-color: rgba(0, 128, 0, 0.3);
 	}

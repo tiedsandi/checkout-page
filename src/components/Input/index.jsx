@@ -6,7 +6,7 @@ import { FormContext } from '../../contexts/FormContext';
 import CharacterCounter from '../character-counter';
 import { InputStyles, Label, Wrapper, ErrorIcon, SuccessIcon, TextAreaSyles } from './styles';
 
-const Input = ({ label, name, pattern, disabled, type }) => {
+const Input = ({ label, name, pattern, disabled, type, max }) => {
 	const { errors, control, Controller, setValue, watch } = useContext(FormContext);
 	const [inputHasValue, setInputHasValue] = useState(false);
 	const [inputValue, setInputValue] = useState('');
@@ -39,7 +39,7 @@ const Input = ({ label, name, pattern, disabled, type }) => {
 				control={control}
 				defaultValue={inputValue}
 				disabled={disabled}
-				rules={{ required: !disabled, pattern }}
+				rules={{ required: !disabled, pattern, maxLength: max }}
 				render={({ field }) =>
 					type === 'text-area' ? (
 						<TextAreaSyles

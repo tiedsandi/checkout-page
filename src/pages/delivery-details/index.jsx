@@ -21,7 +21,7 @@ const DeliveryDetails = () => {
 				<FormDetails>
 					<Input label={'Email'} name="email" pattern={regEmail} />
 					<Input label={'Phone Number'} name="phoneNumber" pattern={regPhone} />
-					<Input label={'Delivery Address'} name="deliveryAddress" type={'text-area'} />
+					<Input label={'Delivery Address'} name="deliveryAddress" type={'text-area'} max={200} />
 				</FormDetails>
 				<FormDropshipper>
 					<Input label={'Dropshiper Name'} name="dropshiper.name" disabled={isDropshipper ? false : true} />
