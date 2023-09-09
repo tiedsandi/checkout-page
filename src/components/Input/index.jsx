@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { InputStyles, Label, Wrapper, ErrorIcon, SuccessIcon, TextAreaSyles } from './styles';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { FormContext } from '../../contexts/FormContext';
 import CharacterCounter from '../character-counter';
+import { InputStyles, Label, Wrapper, ErrorIcon, SuccessIcon, TextAreaSyles } from './styles';
 
 const Input = ({ label, name, pattern, disabled, type }) => {
 	const { errors, control, Controller, setValue, watch } = useContext(FormContext);

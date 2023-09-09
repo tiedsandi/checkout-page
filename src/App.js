@@ -15,11 +15,11 @@ function App() {
 
 	const OnSubmit = data => {
 		console.log(data);
-		// if (pageRender === 'delivery') {
-		// 	setPageRender('payment');
-		// } else if (pageRender === 'payment') {
-		// 	setPageRender('finish');
-		// } else setPageRender('delivery');
+		if (pageRender === 'delivery') {
+			setPageRender('payment');
+		} else if (pageRender === 'payment') {
+			setPageRender('finish');
+		} else setPageRender('delivery');
 	};
 
 	return (
