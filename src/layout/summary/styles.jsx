@@ -10,6 +10,16 @@ export const Wrapper = styled.div`
 	justify-content: space-between;
 `;
 
+export const Box = styled.div`
+	margin-top: 1rem;
+	h4 {
+		color: grey;
+	}
+	h5 {
+		color: green;
+	}
+`;
+
 export const Header = styled.div``;
 export const Footer = styled.div``;
 
@@ -17,7 +27,7 @@ export const PurchaseItems = styled.p`
 	font-size: 16px;
 	color: #aaa;
 `;
-export const TextItem = styled.p`
+export const TextItem = styled.div`
 	font-size: 16px;
 	color: #black;
 	font-weight: 400;
@@ -34,7 +44,7 @@ export const TextTotal = styled.h6`
 	font-weight: 700;
 	display: flex;
 	justify-content: space-between;
-	margin-bottom: 1rem;
+	margin: 1rem 0;
 `;
 
 export const SubmitButton = styled.input`
