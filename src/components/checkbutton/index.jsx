@@ -3,16 +3,17 @@ import { FormContext } from '../../contexts/FormContext';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { CheckBox, Wrapper } from './styles';
+import { CheckBox, Wrapper, Input } from './styles';
 
 const CheckButtonDropshipper = () => {
-	const { isDropshipper, setIsDropshipper } = useContext(FormContext);
+	const { isDropshipper, setIsDropshipper, register } = useContext(FormContext);
 
 	const handleToggle = () => {
 		setIsDropshipper(!isDropshipper);
 	};
 	return (
-		<Wrapper onClick={handleToggle}>
+		<Wrapper onChange={handleToggle}>
+			<Input type="checkbox" {...register('dropshiper.isdropshiper')} defaultChecked={false} />
 			<CheckBox checked={isDropshipper}>
 				{isDropshipper ? (
 					<FontAwesomeIcon icon={faCheck} className="icon" />

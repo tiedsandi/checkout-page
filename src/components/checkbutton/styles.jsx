@@ -1,9 +1,12 @@
 import { styled } from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.label`
 	position: relative;
-	padding-left: 30px;
+	padding-left: 1rem;
 	cursor: pointer;
+`;
+export const Input = styled.input.attrs({ type: 'checkbox' })`
+	visibility: hidden;
 `;
 
 export const CheckBox = styled.div`
