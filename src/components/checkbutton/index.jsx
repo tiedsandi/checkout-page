@@ -6,20 +6,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CheckBox, Wrapper, Input } from './styles';
 
 const CheckButtonDropshipper = () => {
-	const { isDropshipper, setIsDropshipper, register } = useContext(FormContext);
+	const { watchIsDropshipper, Controller, control } = useContext(FormContext);
 
-	const handleToggle = () => {
-		setIsDropshipper(!isDropshipper);
-	};
 	return (
-		<Wrapper onChange={handleToggle}>
-			<Input type="checkbox" {...register('dropshiper.isdropshiper')} defaultChecked={false} />
-			<CheckBox checked={isDropshipper}>
-				{isDropshipper ? (
-					<FontAwesomeIcon icon={faCheck} className="icon" />
-				) : (
-					<FontAwesomeIcon icon={faCheck} className="icon" style={{ visibility: 'hidden' }} />
-				)}
+		<Wrapper>
+			<Controller
+				name="isdropshipper"
+				control={control}
+				render={({ field }) => <Input type="checkbox" {...field} defaultChecked={watchIsDropshipper} />}
+			/>
+			<CheckBox checked={watchIsDropshipper}>
+				<FontAwesomeIcon
+					icon={faCheck}
+					className="icon"
+					style={{ visibility: watchIsDropshipper ? 'visible' : 'hidden' }}
+				/>
 			</CheckBox>
 			Send as dropshipper
 		</Wrapper>

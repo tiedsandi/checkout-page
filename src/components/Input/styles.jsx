@@ -46,7 +46,7 @@ export const InputStyles = styled.input`
 	}
 `;
 
-export const TextAreaSyles = styled.textarea`
+export const TextAreaStyles = styled.textarea`
 	border-color: #ccc;
 	padding: 10px;
 	padding-right: 1.5rem;

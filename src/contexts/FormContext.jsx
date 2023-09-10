@@ -1,6 +1,7 @@
-import { createContext, useState } from 'react';
+import { createContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Controller } from 'react-hook-form';
+import useLocalStorage from 'use-local-storage';
 
 export const FormContext = createContext({
 	isDropshipper: false,
@@ -10,9 +11,26 @@ export const FormContext = createContext({
 export const FormProvider = ({ children }) => {
 	const { register, handleSubmit, formState, setValue, getValues, reset, watch, control } = useForm({
 		mode: 'onChange',
+		defaultValues: {
+			id: '',
+			email: '',
+			phone: '',
+			address: '',
+			shipment: '',
+			payment: '',
+			isdropshipper: false,
+			dropshiper: { name: '', phone: '' },
+		},
 	});
+
 	const { errors } = formState;
-	const [isDropshipper, setIsDropshipper] = useState(false);
+	const watchIsDropshipper = watch('isdropshipper', false);
+	const watchShipment = watch('shipment');
+	const watchPayment = watch('payment');
+	const watchDelivery = watch('address', '');
+	const watchAllFields = watch();
+
+	const [data, setData] = useLocalStorage('dataTransaction', null);
 
 	const value = {
 		register,
@@ -21,11 +39,15 @@ export const FormProvider = ({ children }) => {
 		setValue,
 		getValues,
 		reset,
-		watch,
 		control,
 		Controller,
-		isDropshipper,
-		setIsDropshipper,
+		data,
+		setData,
+		watchIsDropshipper,
+		watchAllFields,
+		watchShipment,
+		watchPayment,
+		watchDelivery,
 	};
 
 	return <FormContext.Provider value={value}>{children}</FormContext.Provider>;

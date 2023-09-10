@@ -4,29 +4,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { FormContext } from '../../contexts/FormContext';
 import CharacterCounter from '../character-counter';
-import { InputStyles, Label, Wrapper, ErrorIcon, SuccessIcon, TextAreaSyles } from './styles';
+import { InputStyles, Label, Wrapper, ErrorIcon, SuccessIcon, TextAreaStyles } from './styles';
 
 const Input = ({ label, name, pattern, disabled, type, max }) => {
-	const { errors, control, Controller, setValue, watch } = useContext(FormContext);
-	const [inputHasValue, setInputHasValue] = useState(false);
-	const [inputValue, setInputValue] = useState('');
+	const { errors, control, Controller, watchDelivery, watchAllFields } = useContext(FormContext);
 
-	const deliveryAddressValue = watch(name, '');
+	const watchInput = watchAllFields[name];
+	const [inputHasValue, setInputHasValue] = useState(false);
+	// @audit need to remove inputhasvalue
 
 	const fullName = name;
 	const part = name.split('.');
 	const errorName = part[1] && errors[part[0]] ? errors[part[0]][part[1]] : errors[part[0]];
 
-	// console.log(errors);
-	useEffect(() => {
-		if (!disabled) {
-			setValue(fullName, inputValue);
-		}
-	}, [inputValue, setValue, disabled, fullName]);
-
-	const InputHandle = e => {
+	const InputHandle = () => {
 		setInputHasValue(true);
-		setInputValue(e.target.value);
 	};
 
 	return (
@@ -37,12 +29,12 @@ const Input = ({ label, name, pattern, disabled, type, max }) => {
 			<Controller
 				name={fullName}
 				control={control}
-				defaultValue={inputValue}
+				defaultValue={watchInput}
 				disabled={disabled}
 				rules={{ required: !disabled, pattern, maxLength: max }}
 				render={({ field }) =>
 					type === 'text-area' ? (
-						<TextAreaSyles
+						<TextAreaStyles
 							{...field}
 							id={fullName}
 							onInput={InputHandle}
@@ -71,7 +63,7 @@ const Input = ({ label, name, pattern, disabled, type, max }) => {
 					<FontAwesomeIcon icon={faCheck} />
 				</SuccessIcon>
 			)}
-			{type === 'text-area' && <CharacterCounter value={deliveryAddressValue} maxLength={200} />}
+			{type === 'text-area' && <CharacterCounter value={watchDelivery} maxLength={200} />}
 		</Wrapper>
 	);
 };

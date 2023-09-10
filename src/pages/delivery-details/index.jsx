@@ -6,7 +6,7 @@ import { FormContext } from '../../contexts/FormContext';
 import CheckButtonDropshipper from '../../components/checkbutton';
 
 const DeliveryDetails = () => {
-	const { isDropshipper } = useContext(FormContext);
+	const { watchIsDropshipper } = useContext(FormContext);
 
 	const regPhone = /^[0][8][0-9,+()]{6,20}$/;
 	const regEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -20,16 +20,16 @@ const DeliveryDetails = () => {
 			<WrapperForm>
 				<FormDetails>
 					<Input label={'Email'} name="email" pattern={regEmail} />
-					<Input label={'Phone Number'} name="phoneNumber" pattern={regPhone} />
-					<Input label={'Delivery Address'} name="deliveryAddress" type={'text-area'} max={200} />
+					{/* <Input label={'Phone Number'} name="phone" pattern={regPhone} />
+					<Input label={'Delivery Address'} name="address" type={'text-area'} max={200} /> */}
 				</FormDetails>
 				<FormDropshipper>
-					<Input label={'Dropshiper Name'} name="dropshiper.name" disabled={isDropshipper ? false : true} />
+					{/* <Input label={'Dropshiper Name'} name="dropshiper.name" disabled={watchIsDropshipper ? false : true} /> */}
 					<Input
 						label={'Dropshiper Phone Number'}
-						name="dropshiper.phoneNumber"
-						pattern={regPhone}
-						disabled={isDropshipper ? false : true}
+						name="dropshiper.phone"
+						// pattern={regPhone}
+						disabled={watchIsDropshipper ? false : true}
 					/>
 				</FormDropshipper>
 			</WrapperForm>
