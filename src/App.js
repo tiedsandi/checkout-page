@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 
 import DeliveryDetails from './pages/delivery-details';
 import PaymentDetails from './pages/payment-details';
@@ -11,7 +11,7 @@ import { FormContext } from './contexts/FormContext';
 
 function App() {
 	const { pageRender, setPageRender } = useContext(CheckoutContext);
-	const { handleSubmit, setData, watchAllFields } = useContext(FormContext);
+	const { handleSubmit, setData } = useContext(FormContext);
 
 	const OnSubmit = data => {
 		console.log(data);

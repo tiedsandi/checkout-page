@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -9,47 +9,29 @@ import { InputStyles, Label, Wrapper, ErrorIcon, SuccessIcon, TextAreaStyles } f
 const Input = ({ label, name, pattern, disabled, type, max }) => {
 	const { errors, control, Controller, watchDelivery, watchAllFields } = useContext(FormContext);
 
-	const watchInput = watchAllFields[name];
-	const [inputHasValue, setInputHasValue] = useState(false);
-	// @audit need to remove inputhasvalue
+	const [fieldName, subFieldName] = name.split('.');
+	const watchInput = subFieldName ? watchAllFields[fieldName]?.[subFieldName] : watchAllFields[fieldName];
+	const errorName = subFieldName ? errors[fieldName]?.[subFieldName] : errors[fieldName];
 
-	const fullName = name;
-	const part = name.split('.');
-	const errorName = part[1] && errors[part[0]] ? errors[part[0]][part[1]] : errors[part[0]];
-
-	const InputHandle = () => {
-		setInputHasValue(true);
-	};
-
+	const isInputActive = watchInput && watchInput !== '';
+	const labelClassName = isInputActive ? 'active' : '';
+	const inputClassName = `${errorName ? 'error' : isInputActive ? 'success' : ''}`;
 	return (
 		<Wrapper>
-			<Label className={`${inputHasValue ? 'active' : ''}`} htmlFor={fullName}>
+			<Label className={labelClassName} htmlFor={name}>
 				{label}
 			</Label>
 			<Controller
-				name={fullName}
+				name={name}
 				control={control}
 				defaultValue={watchInput}
 				disabled={disabled}
 				rules={{ required: !disabled, pattern, maxLength: max }}
 				render={({ field }) =>
 					type === 'text-area' ? (
-						<TextAreaStyles
-							{...field}
-							id={fullName}
-							onInput={InputHandle}
-							onBlur={e => e.target.value === '' && setInputHasValue(false)}
-							className={`${errorName ? 'error' : inputHasValue ? 'success' : ''}`}
-						/>
+						<TextAreaStyles {...field} id={name} className={inputClassName} />
 					) : (
-						<InputStyles
-							{...field}
-							type="text"
-							id={fullName}
-							onInput={InputHandle}
-							onBlur={e => e.target.value === '' && setInputHasValue(false)}
-							className={`${errorName ? 'error' : inputHasValue ? 'success' : ''}`}
-						/>
+						<InputStyles {...field} type="text" id={name} className={inputClassName} />
 					)
 				}
 			/>
@@ -58,7 +40,7 @@ const Input = ({ label, name, pattern, disabled, type, max }) => {
 					<FontAwesomeIcon icon={faTimes} />
 				</ErrorIcon>
 			)}
-			{!errorName && inputHasValue && (
+			{!errorName && isInputActive && (
 				<SuccessIcon>
 					<FontAwesomeIcon icon={faCheck} />
 				</SuccessIcon>
