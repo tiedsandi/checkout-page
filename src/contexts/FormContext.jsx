@@ -30,7 +30,7 @@ export const FormProvider = ({ children }) => {
 	const watchDelivery = watch('address', '');
 	const watchAllFields = watch();
 
-	const [data, setData] = useLocalStorage('dataTransaction', null);
+	const [dataTransaction, setDataTransaction] = useLocalStorage('data-transaction', null);
 
 	const value = {
 		register,
@@ -41,8 +41,8 @@ export const FormProvider = ({ children }) => {
 		reset,
 		control,
 		Controller,
-		data,
-		setData,
+		dataTransaction,
+		setDataTransaction,
 		watchIsDropshipper,
 		watchAllFields,
 		watchShipment,

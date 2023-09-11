@@ -11,16 +11,20 @@ import { FormContext } from './contexts/FormContext';
 
 function App() {
 	const { pageRender, setPageRender } = useContext(CheckoutContext);
-	const { handleSubmit, setData } = useContext(FormContext);
+	const { handleSubmit, setDataTransaction, reset } = useContext(FormContext);
 
 	const OnSubmit = data => {
 		console.log(data);
-		setData(data);
+		setDataTransaction(data);
 		if (pageRender === 'delivery') {
 			setPageRender('payment');
 		} else if (pageRender === 'payment') {
 			setPageRender('finish');
-		} else setPageRender('delivery');
+		} else {
+			reset();
+			setPageRender('delivery');
+			setDataTransaction(null);
+		}
 	};
 
 	return (
