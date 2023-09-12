@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 
+import { CheckoutContext } from './contexts/CheckoutContext';
+import { FormContext } from './contexts/FormContext';
+
 import DeliveryDetails from './pages/delivery-details';
 import PaymentDetails from './pages/payment-details';
 import FinishDetail from './pages/finish-details';
 import Summary from './layout/summary';
 
-import { Breadcrumb, Grid, Wrapper } from './Styled';
-import { CheckoutContext } from './contexts/CheckoutContext';
-import { FormContext } from './contexts/FormContext';
+import { Breadcrumb, Grid, Wrapper, BreadcrumbItem } from './Styled';
 
 function App() {
 	const { pageRender, setPageRender } = useContext(CheckoutContext);
@@ -30,7 +31,19 @@ function App() {
 	return (
 		<Wrapper>
 			<Breadcrumb>
-				<span>Delivery</span> {'>'} Payment {'>'} Finish
+				<BreadcrumbItem className={'active'} onClick={() => pageRender !== 'delivery' && setPageRender('delivery')}>
+					Delivery
+				</BreadcrumbItem>
+				<BreadcrumbItem
+					className={pageRender !== 'delivery' ? 'active' : ''}
+					onClick={() => pageRender === 'finish' && setPageRender('payment')}>
+					{'>'} Payment
+				</BreadcrumbItem>
+				<BreadcrumbItem
+					className={pageRender === 'finish' ? 'active' : ''}
+					onClick={() => pageRender === 'finish' && setPageRender('finish')}>
+					{'>'} Finish
+				</BreadcrumbItem>
 			</Breadcrumb>
 			<Grid onSubmit={handleSubmit(OnSubmit)}>
 				{pageRender === 'delivery' && <DeliveryDetails />}

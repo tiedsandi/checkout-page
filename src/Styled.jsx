@@ -17,8 +17,15 @@ export const Breadcrumb = styled.div`
 	font-size: 16px;
 	margin-bottom: 1rem;
 
-	& span {
+	& span .active {
 		color: orange;
+	}
+`;
+
+export const BreadcrumbItem = styled.span`
+	&.active {
+		color: orange;
+		cursor: pointer;
 	}
 `;
 
